@@ -1,0 +1,65 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<h1>UCI Major Comparer</h1>
+<hr>
+
+<!-- Back Button -->
+<div style="margin-top: 30px; text-align: center;">
+  <a href="{{ url_for('index') }}">
+    <button style="padding: 10px 20px;">Compare Something Else</button>
+  </a>
+</div>
+
+<!-- Add table-wrapper here -->
+<div class="table-wrapper">
+  <div class="comparison-section" style="display: flex; justify-content: space-between; gap: 40px;">
+    <!-- Left Major -->
+    <div style="flex: 1;">
+      <h2>{{ major1 }}</h2>
+      <table>
+        {% for row in table1 %}
+        <tr>
+          {% if " : " in row %}
+          {% set cols = row.rsplit(' : ', 1) %}
+          {% if row in overlap %}
+            <td class = "overlap-row">{{ cols[0] }}</td>
+            <td class = "overlap-row">{{ cols[1] }}</td>
+          {% else %}
+          <td>{{ cols[0] }}</td>
+          <td>{{ cols[1] }}</td>
+          {% endif %}
+          {% else %}
+          <td colspan="2" style="font-weight: bold;" fontweight>{{ row }}</td>
+          {% endif %}
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+
+    <!-- Right Major -->
+    <div style="flex: 1;">
+      <h2>{{ major2 }}</h2>
+      <table>
+        {% for row in table2 %}
+        <tr>
+          {% if " : " in row %}
+          {% set cols = row.rsplit(' : ', 1) %}
+          {% if row in overlap %}
+          <td class = "overlap-row">{{ cols[0] }}</td>
+          <td class = "overlap-row">{{ cols[1] }}</td>
+          {% else %}
+          <td>{{ cols[0] }}</td>
+          <td>{{ cols[1] }}</td>
+          {% endif %}
+          {% else %}
+          <td colspan="2" style="font-weight: bold;" fontweight>{{ row }}</td>
+          {% endif %}
+        </tr>
+        {% endfor %}
+      </table>
+    </div>
+  </div>
+</div>
+
+{% endblock %}

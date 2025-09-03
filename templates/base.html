@@ -1,0 +1,21 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='css/styles.css') }}">
+    <title>UCI Major Comparison</title>
+    <link rel="icon" href="{{ url_for('static', filename='/images/favicon/uci_logo.png') }}">
+    {% block head %}{% endblock %}
+
+</head>
+<body>
+    {% block body %}{% endblock %}
+</body>
+
+<footer style="max-height: 20px;">
+    <hr>
+    <h2 >Disclaimer</h2>
+    <p>This website is still experimental. Data may be retrieved incorrectly. Make sure to double check.</p>
+</footer>
+</html>

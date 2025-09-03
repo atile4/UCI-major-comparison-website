@@ -1,0 +1,56 @@
+{% extends 'base.html' %}
+
+{% block body %}
+<h1>UCI Major Comparer</h1>
+<hr>
+
+<div class="description">
+  <p>Compare the courses that overlap between majors</p>
+  <p>Mainly looking for overlap between majors for double majoring.</p>
+  <p>There may be some restrictions between majors that you are actually allowed to double major in. See the UCI website for more details.</p>
+</div>
+
+{% with messages = get_flashed_messages(with_categories=true) %}
+{% if messages %}
+<div class="flash-messages">
+  {% for category, message in messages %}
+  {% if category == 'error' %}
+  <p class="error-message">{{ message }}</p>
+  {% endif %}
+  {% endfor %}
+</div>
+{% endif %}
+
+{% endwith %}
+<form action="{{ url_for('compare_majors') }}" method="POST">
+  <div class="dropdown-section">
+    <h2 class="dropdown-heading">Select Majors to Compare</h2>
+
+    <div class="dropdown-row">
+      <div class="dropdown-container">
+        <input type="text" name="major1" class="dropdown-input" placeholder="Select a major..." autocomplete="off" />
+        <button type="button" class="dropdown-toggle">▼</button>
+        <div class="dropdown-menu"></div>
+      </div>
+
+      <div class="dropdown-container">
+        <input type="text" name="major2" class="dropdown-input" placeholder="Select another major..."
+          autocomplete="off" />
+        <button type="button" class="dropdown-toggle">▼</button>
+        <div class="dropdown-menu"></div>
+      </div>
+    </div>
+
+
+
+    <!-- Submit Button -->
+    <div style="margin-top: 20px; text-align: center;">
+      <button type="submit" class="submit-button">Compare Majors</button>
+    </div>
+
+  </div>
+</form>
+
+<script src="{{ url_for('static', filename='/js/script.js') }}"></script>
+
+{% endblock %}

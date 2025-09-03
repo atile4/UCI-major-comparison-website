@@ -1,0 +1,151 @@
+body,
+html {
+  margin: 0;
+  font-family: sans-serif;
+  background-color: whitesmoke;
+}
+
+h1 {
+  text-align: center;
+}
+
+h2 {
+  text-align: center;
+}
+
+p {
+  text-align: center;
+}
+
+.content {
+  margin: 0 auto;
+  width: 400px;
+}
+
+table, td, th {
+  border: 1px solid #aaa;
+}
+
+table {
+  border-collapse: collapse;
+  width: 100%;
+}
+
+td {
+  text-align: left;
+  padding: 5px;
+}
+
+th {
+  text-align: left;
+  height: 30px;
+  padding: 5px;
+}
+
+.overlap-row {
+  background-color: rgb(165, 234, 165);
+}
+
+.table-wrapper {
+  max-width: 1200px;
+  margin: 0 auto;
+  padding: 0 40px;  /* Horizontal padding around the whole comparison section */
+  margin-bottom: 20px;
+}
+
+.form {
+  margin-top: 20px;
+}
+
+#content {
+  width: 70%;
+}
+
+.description {
+  max-width: fit-content;
+  position: relative;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+/* Dropdown Button */
+.dropdown-container {
+  position: relative;
+  width: 300px;
+}
+
+.dropdown-input {
+  width: 100%;
+  padding: 8px;
+  box-sizing: border-box;
+}
+
+.dropdown-toggle {
+  position: absolute;
+  right: 0;
+  top: 0;
+  height: 100%;
+  background: #eee;
+  /* border: none; */
+  cursor: pointer;
+  padding: 0 6px;
+  font-size: 16px;
+  border: 1px solid #000000;
+}
+
+.dropdown-menu {
+  position: absolute;
+  top: 100%;
+  width: 100%;
+  max-height: 200px;
+  overflow-y: auto;
+  background: white;
+  border: 1px solid #ccc;
+  display: none;
+  z-index: 10;
+}
+
+.dropdown-item {
+  padding: 8px;
+  cursor: pointer;
+}
+
+.dropdown-item:hover {
+  background: #f0f0f0;
+}
+
+.dropdown-row {
+  display: flex;
+  justify-content: center;  /* centers the row horizontally */
+  gap: 60px;                 /* space between dropdowns; adjust as needed */
+  margin-top: 20px;          /* optional spacing above */
+  flex-wrap: wrap;
+}
+
+.dropdown-heading {
+  max-width: fit-content;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+.submit-button {
+  padding: 10px 20px;
+  font-size: 16px;
+  background-color: #007bff;
+  border: none;
+  color: rgb(219, 219, 2);
+  border-radius: 6px;
+  cursor: pointer;
+}
+
+.submit-button:hover {
+  background-color: #0056b3;
+}
+
+.error-message {
+  color: red;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 10px;
+  margin-top: 10px;
+}
