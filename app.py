@@ -1,5 +1,6 @@
 from flask import Flask, render_template, url_for, request, redirect, flash
 from utils.table_maker import makeTableList
+from utils.name_validation import checkMajors
 
 app = Flask(__name__)
 app.secret_key = "your_secret_key"  # Needed for flash messages
@@ -14,12 +15,9 @@ def compare_majors():
     major2 = request.form.get('major2', '').strip()
 
     # Server-side validation
-    if not major1 or not major2:
-        flash("Please select both majors before submitting.", "error")
-        return redirect(url_for('index'))
-
-    if major1.lower() == major2.lower():
-        flash("Please select two different majors.", "error")
+    error = checkMajors(major1, major2)
+    if error:
+        flash(error, "error")
         return redirect(url_for('index'))
     
     # Make full tables (with both headers and courses)
