@@ -24,20 +24,24 @@ def getRows(major : str) -> list:
 # Converts and filters HTML scrape text for processing into lists
 # @param website catalogue of a major
 # @return table list (with headers) and course list (without headers)
-def makeTableList(major : str) -> (list | list):
+def makeTableList(major : str) -> list:
     rows = getRows(major)
 
     table_list = []
-    # course_list = []
     
     pattern = re.compile(r"^(.*\S)\s+(\S+)$")
     for row in rows:
         cols = row.find_all('td')
         first_col = cols[0].get_text(strip=True).replace("\xa0", " ")
+        
+        # the current row is a header or a subheader
         if len(cols) == 1:
             table_list.append(first_col)
+        
+        # the current row lists at least one course
         else:
             title = cols[1].get_text(strip=True)
+            # condition for a series of required courses
             if "-" in first_col:
                 match = pattern.match(first_col)
                 school, codes = match.groups()
@@ -46,9 +50,11 @@ def makeTableList(major : str) -> (list | list):
 
                 for i in range(len(codes)):
                     table_list.append(f"{school} {codes[i]} : {titles[i]}")
-                    # course_list.append(f"{school} {codes[i]} : {titles[i]}")
             else:
+                if first_col[0:2] == "or":
+                    first_col = first_col[2:]
+                    table_list.append("or")
                 table_list.append(first_col + " : " + title)
-                # course_list.append(first_col + " : " + title)
+            
     return table_list
     
