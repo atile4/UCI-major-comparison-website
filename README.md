@@ -5,4 +5,7 @@ Data is retrieved by scraping UCI's course catalog.
 
 **NOTE: This website is still experimental. There may be some bugs.**
 
-**This website is not public.**
+## Known Issues
+- Any majors that involve specializations are not separated.
+
+- Courses that are listed as series (ie, COMPSCI 103-189) or explicitly listed are not counted.
